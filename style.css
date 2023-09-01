@@ -1,0 +1,20 @@
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 10px;
+  }
+
+  /* Style for the navigation bar images */
+  #navbar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  /* Hover effect for images */
+  #navbar img:hover {
+    transform: scale(1.2);
+  }
