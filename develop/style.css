@@ -7,9 +7,9 @@
 
   /* Style for the navigation bar images */
   #navbar img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    width: 110px;
+    height: 110px;
+    border-radius: 8%;
     cursor: pointer;
     transition: transform 0.2s;
   }
@@ -21,5 +21,10 @@
  .container, .title {
    
     text-align: center;
+}
+.categories {
+    text-align: center;
+    color: rgb(232, 42, 42);
+    padding: 30px
 }
   
