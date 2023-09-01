@@ -1,7 +1,7 @@
 #navbar {
     display: flex;
     justify-content: space-around;
-    background-color: #333;
+    background-color: #eed7d7;
     padding: 10px;
   }
 
@@ -18,3 +18,8 @@
   #navbar img:hover {
     transform: scale(1.2);
   }
+ .container, .title {
+   
+    text-align: center;
+}
+  
