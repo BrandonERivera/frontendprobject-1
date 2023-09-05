@@ -59,6 +59,7 @@ function getMovieFromImdbId(imdbId) {
 
     });
 }
+
 //variable instead the name to search by
 //if we are doing pre-designated names we need to have the buttons give the function the variable instead of "spider-man"
 getMovieList('spider-man')

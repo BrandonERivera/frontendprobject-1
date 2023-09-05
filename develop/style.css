@@ -1,4 +1,4 @@
-#navbar {
+.navbar {
     display: flex;
     justify-content: space-around;
     background-color: #eed7d7;
@@ -6,7 +6,7 @@
   }
 
   /* Style for the navigation bar images */
-  #navbar img {
+  .navbar img {
     width: 110px;
     height: 110px;
     border-radius: 8%;
@@ -15,7 +15,7 @@
   }
 
   /* Hover effect for images */
-  #navbar img:hover {
+  .navbar img:hover {
     transform: scale(1.2);
   }
  .container, .title {
@@ -27,4 +27,5 @@
     color: rgb(232, 42, 42);
     padding: 30px
 }
+
   
