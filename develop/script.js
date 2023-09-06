@@ -66,3 +66,16 @@ getMovieList('spider-man')
 //for comics it needs the id of the character
 getcomicList('1009610')
 
+
+
+// Get all images with the class "clickable-image"
+const clickableImages = document.querySelectorAll('.clickable-image');
+
+// Loop through each image and add a click event listener
+clickableImages.forEach((image, index) => {
+    image.addEventListener('click', () => {
+        // Your click event handler code here
+        // You can access the clicked image using 'image'
+        alert(`You clicked on Image ${index + 1}`);
+    });
+});
