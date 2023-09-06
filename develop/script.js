@@ -1,5 +1,6 @@
-//gets the movie list by searchterm
+//variable for the images with clickable class
 var navclickel = document.querySelectorAll(".clickable")
+//gets the movie list by searchterm
 function getMovieList(searchTerm) {
   var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
 
@@ -60,12 +61,11 @@ function getMovieFromImdbId(imdbId) {
 
     });
 }
-
+//this grabs every image thats class clickable and gives them an onclickevent
 for (var i = 0; i < navclickel.length; i++ ){
   navclickel[i].addEventListener("click", getinfo)
-
 }
-
+//this function is where the getmovie and get comic listing will go
 function getinfo()
 {
   console.log(this.id)
@@ -75,17 +75,3 @@ function getinfo()
 //getMovieList('spider-man')
 //for comics it needs the id of the character
 //getcomicList('1009610')
-
-
-
-// Get all images with the class "clickable-image"
-const clickableImages = document.querySelectorAll('.clickable-image');
-
-// Loop through each image and add a click event listener
-clickableImages.forEach((image, index) => {
-    image.addEventListener('click', () => {
-        // Your click event handler code here
-        // You can access the clicked image using 'image'
-        alert(`You clicked on Image ${index + 1}`);
-    });
-});
