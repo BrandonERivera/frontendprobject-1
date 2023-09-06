@@ -4,9 +4,8 @@
     <meta charset="UFT-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Marvel Characters!</title>
-    <link rel="stylesheet"  href="./develop/style.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-     
+    <link rel="stylesheet"  href="./develop/style.css"/>
   </head>
   
    <header> 
@@ -16,53 +15,36 @@
         <img id="backgimg" src="" alt="background"/>
       <h2 class="subtitle">Navigation bar</h2>
     </header>
-    <body>
-      
-      <div id="navbar">
-        <img id="image1" src="assets\images\blackpanther.jpg" alt="BlackPanter" />
-        <img id="image2" src="assets\images\captainamerica.jpg" alt="CapitanAmerica" />
-        <img id="image3" src="assets\images\deadpool.jpg" alt="DeadPool" />
-        <img id="image4" src="assets\images\doctorstrange.png" alt="DoctorStrange" />
-        <img id="image5" src="assets\images\hulk.png" alt="Hulk" />
+    <!-- This is the Nav area-->
+      <div class="is-flex is-flex-direction-column">
+        <h2 class="subtitle is-flex is-justify-content-center">Navigation bar</h2>
+        <div class="navbar">
+        <img id="BlackPanther" class="clickable" src="assets\images\blackpanther.jpg" alt="BlackPanther" />
+        <img id="CapitanAmerica" class="clickable" src="assets\images\captainamerica.jpg" alt="CapitanAmerica" />
+        <img id="deadpool" class="clickable" src="assets\images\deadpool.jpg" alt="DeadPool" />
+        <img id="doctorstrange" class="clickable" src="assets\images\doctorstrange.png" alt="DoctorStrange" />
+        <img id="Hulk" class="clickable" src="assets\images\hulk.png" alt="Hulk" />
       </div>
-      <section>
-        <h2 class="categories">My Favs.</h2>
-        <div class="columns">
-  <div class="column">
-    First column
-  </div>
-  <div class="column">
-    Second column
-  </div>
-  <div class="column">
-    Third column
-</div>
+    </div>
+    <!--This is where the favorites and movie/comic results are-->
+    <div class ="is-flex is-flex-direction-column">
+      <section id = "favorite" class="is-flex is-flex-direction-row">
+        <h2 class="categories">Favorited</h2>
+        <div id="favorites">
+
+        </div>
       </section>
-      <section>
+      <section id = "Movies" class="is-flex is-flex-direction-row">
         <h2 class="categories">Movie Results</h2>
-        <div class="columns">
-  <div class="column">
-    First column
-  </div>
-  <div class="column">
-    Second column
-  </div>
-  <div class="column">
-    Third column
-</div>
+        <div  id ="MovieRes" >
+
+        </div>
       </section>
-      <section>
+      <section id = Comics class="is-flex is-flex-direction-row">
         <h2 class="categories">Comic Results</h2>
-        <div class="columns">
-  <div class="column">
-    First column
-  </div>
-  <div class="column">
-    Second column
-  </div>
-  <div class="column">
-    Third column
-</div>
+        <div id="Comicres">
+
+        </div>
       </section>
     </div>
   </section>
@@ -96,6 +78,6 @@ getMovieList('spider-man');
     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
-    <script src="./develop/script.js"></script>
+    <!--<script src="./develop/script.js"></script> -->
   </body>
 </html>
