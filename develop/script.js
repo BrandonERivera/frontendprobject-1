@@ -1,4 +1,5 @@
 //gets the movie list by searchterm
+var navclickel = document.querySelectorAll(".clickable")
 function getMovieList(searchTerm) {
   var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
 
@@ -60,9 +61,18 @@ function getMovieFromImdbId(imdbId) {
     });
 }
 
+for (var i = 0; i < navclickel.length; i++ ){
+  navclickel[i].addEventListener("click", getinfo)
+
+}
+
+function getinfo()
+{
+  console.log(this.id)
+}
 //variable instead the name to search by
 //if we are doing pre-designated names we need to have the buttons give the function the variable instead of "spider-man"
-getMovieList('spider-man')
+//getMovieList('spider-man')
 //for comics it needs the id of the character
-getcomicList('1009610')
+//getcomicList('1009610')
 
