@@ -12,9 +12,8 @@
    <header> 
   <section class="section">
     <div class="container">
-      <h1 class="title">
-        Movies/Comics books.
-      </h1>
+      <h1 class="title">Marvel Movies and Comics Searcher!</h1>
+        <img id="backgimg" src="" alt="background"/>
       <h2 class="subtitle">Navigation bar</h2>
     </header>
     <body>
@@ -67,6 +66,34 @@
       </section>
     </div>
   </section>
+  <script>
+        function getMovieList(searchTerm) {
+  var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
+
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      // Check if there are movies in the search results
+      if (data.Search && data.Search.length > 0) {
+        // Get a random index within the range of the search results array
+        var randomIndex = Math.floor(Math.random() * data.Search.length);
+
+        // Use the random index to get the poster URL of a random movie
+        var posterUrl = data.Search[randomIndex].Poster;
+
+        // Update the background image using the random movie's poster URL
+        document.getElementById('backgimg').src = posterUrl;
+      } else {
+        console.log("No movies found for the search term: " + searchTerm);
+      }
+    });
+}
+
+// Call the getMovieList function with your desired search term
+getMovieList('spider-man');
+    </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
     <script src="./develop/script.js"></script>
