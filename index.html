@@ -42,6 +42,7 @@
       </section>
       <section id = Comics class="is-flex is-flex-direction-row">
         <h2 class="categories">Comic Results</h2>
+        <!-- <img id="cres" src="" alt="cres"/> -->
         <div id="Comicres">
 
         </div>
@@ -75,6 +76,53 @@
 
 // Call the getMovieList function with your desired search term
 getMovieList('spider-man');
+
+function getComicList(searchTerm) {
+  var apikey = "f2a2353663e07a9ca6af17c5824f353f";
+  var privkey = "fc7aae4a19c48bc5908b84830888822a34e57e713";
+  var ts = new Date().getTime().toString(); // Use the current timestamp
+  var passhash = CryptoJS.MD5(ts + privkey + apikey).toString();
+  console.log(passhash);
+
+  var requestUrl = `https://gateway.marvel.com:443/v1/public/characters/${searchTerm}/comics?limit=50&ts=${ts}&hash=${passhash}&apikey=${apikey}`;
+
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var cresElement = document.getElementById("cres");
+
+      // Check if there are comics in the search results
+      if (data.data && data.data.results.length > 0) {
+        // Get a random index within the range of the comic results array
+        var randomIndex = Math.floor(Math.random() * data.data.results.length);
+
+        // Use the random index to get the comic thumbnail URL
+        var comicThumbnail = data.data.results[randomIndex].thumbnail;
+
+        // Create an image element for the comic thumbnail
+        var comicImg = document.createElement('img');
+        comicImg.src = comicThumbnail.path + '/portrait_incredible.' + comicThumbnail.extension;
+        comicImg.alt = data.data.results[randomIndex].title;
+
+        // Clear previous results
+        cresElement.innerHTML = '';
+
+        // Append the comic image to the "cres" element
+        cresElement.appendChild(comicImg);
+      } else {
+        // If no comics found, display a message
+        cresElement.innerHTML = 'No comics found for the character: ' + searchTerm;
+      }
+    })
+    .catch(function (error) {
+      console.error('Error:', error);
+    });
+}
+
+// Call the getComicList function with your desired search term
+getComicList('1009610'); // This will retrieve comics for Spider-Man
     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>

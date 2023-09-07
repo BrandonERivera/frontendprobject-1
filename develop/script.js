@@ -24,6 +24,7 @@ function getMovieList(searchTerm) {
     });
 }
 //get the comic list by searchterm
+const comicres = document.querySelector("#Comicres")
 function getcomicList(searchTerm) {
   var apikey = "c28d1b2b7c226d7e5519d7bcd4284701"
   var privkey = "fb776d9a0343edc1503c8e8173ae1b0de30d0e25"
@@ -39,7 +40,20 @@ function getcomicList(searchTerm) {
     })
     .then(function (data) {
       //shows the data of the comics that character is in
+      console.log("-------------------------")
       console.log(data)
+      for(let i = 0; i < 3; i++) {
+        const img = document.createElement("img")
+        var randomIndex = Math.floor(Math.random() * data.length)
+        const imagePath = data.data.results[randomIndex].images[0].path
+        if(imagePath.length > 0) {   
+          img.setAttribute("src", data.data.results[randomIndex].images[0].path + ".jpg")
+          comicres.append(img)
+        } else {
+          img.setAttribute("src", data.data.results[i + 1].images[0].path + ".jpg")
+          comicres.append(img)
+        }
+      }
     });
 
 }
@@ -74,4 +88,4 @@ function getinfo()
 //if we are doing pre-designated names we need to have the buttons give the function the variable instead of "spider-man"
 //getMovieList('spider-man')
 //for comics it needs the id of the character
-//getcomicList('1009610')
+getcomicList('1009610')
