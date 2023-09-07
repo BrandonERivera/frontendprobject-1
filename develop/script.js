@@ -42,20 +42,27 @@ function getcomicList(searchTerm) {
       //shows the data of the comics that character is in
       console.log("-------------------------")
       console.log(data)
-      for(let i = 0; i < 3; i++) {
-        const img = document.createElement("img")
-        var randomIndex = Math.floor(Math.random() * data.length)
-        const imagePath = data.data.results[randomIndex].images[0].path
-        if(imagePath.length > 0) {   
-          img.setAttribute("src", data.data.results[randomIndex].images[0].path + ".jpg")
-          comicres.append(img)
-        } else {
-          img.setAttribute("src", data.data.results[i + 1].images[0].path + ".jpg")
-          comicres.append(img)
+      const comics = data.data.results;
+
+      // Filter out comics that don't have images
+      const comicsWithImages = comics.filter((comic) => {
+        return comic.images.length > 0;
+      });
+
+      // Display a random selection of comics with images
+      for (let i = 0; i < 3; i++) {
+        if (comicsWithImages.length > 0) {
+          const img = document.createElement("img");
+          const randomIndex = Math.floor(Math.random() * comicsWithImages.length);
+          const imagePath = comicsWithImages[randomIndex].images[0].path;
+          img.setAttribute("src", `${imagePath}.jpg`);
+          comicres.append(img);
+
+          // Remove the selected comic from the array to avoid duplicates
+          comicsWithImages.splice(randomIndex, 1);
         }
       }
     });
-
 }
 
 function getMovieFromImdbId(imdbId) {
