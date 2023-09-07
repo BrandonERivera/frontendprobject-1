@@ -1,5 +1,10 @@
 //variable for the images with clickable class
 var navclickel = document.querySelectorAll(".clickable")
+
+for (var i = 0; i < navclickel.length; i++ ){
+  navclickel[i].addEventListener("click", getinfo)
+}
+getmovieposter('spider-man')
 //gets the movie list by searchterm
 function getMovieList(searchTerm) {
   var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
@@ -76,9 +81,6 @@ function getMovieFromImdbId(imdbId) {
     });
 }
 //this grabs every image thats class clickable and gives them an onclickevent
-for (var i = 0; i < navclickel.length; i++ ){
-  navclickel[i].addEventListener("click", getinfo)
-}
 //this function is where the getmovie and get comic listing will go
 function getinfo()
 {
@@ -162,6 +164,5 @@ function getComicposter(searchTerm) {
       console.error('Error:', error);
     });
 }
-
 // Call the getComicList function with your desired search term
-getComicList('1009610'); // This will retrieve comics for Spider-Man
+//getComicposter('1009610'); // This will retrieve comics for Spider-Man
