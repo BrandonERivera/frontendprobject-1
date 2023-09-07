@@ -88,4 +88,80 @@ function getinfo()
 //if we are doing pre-designated names we need to have the buttons give the function the variable instead of "spider-man"
 //getMovieList('spider-man')
 //for comics it needs the id of the character
-getcomicList('1009610')
+//getcomicList('1009610')
+
+function getmovieposter(searchTerm) {
+  var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
+
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      // Check if there are movies in the search results
+      if (data.Search && data.Search.length > 0) {
+        // Get a random index within the range of the search results array
+        var randomIndex = Math.floor(Math.random() * data.Search.length);
+
+        // Use the random index to get the poster URL of a random movie
+        var posterUrl = data.Search[randomIndex].Poster;
+
+        // Update the background image using the random movie's poster URL
+        document.getElementById('backgimg').src = posterUrl;
+      } 
+      else 
+      {
+        console.log("No movies found for the search term: " + searchTerm);
+      }
+    });
+}
+
+// Call the getMovieList function with your desired search term
+getMovieList('spider-man');
+
+function getComicposter(searchTerm) {
+  var apikey = "f2a2353663e07a9ca6af17c5824f353f";
+  var privkey = "fc7aae4a19c48bc5908b84830888822a34e57e713";
+  var ts = new Date().getTime().toString(); // Use the current timestamp
+  var passhash = CryptoJS.MD5(ts + privkey + apikey).toString();
+  console.log(passhash);
+
+  var requestUrl = `https://gateway.marvel.com:443/v1/public/characters/${searchTerm}/comics?limit=50&ts=${ts}&hash=${passhash}&apikey=${apikey}`;
+
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var cresElement = document.getElementById("cres");
+
+      // Check if there are comics in the search results
+      if (data.data && data.data.results.length > 0) {
+        // Get a random index within the range of the comic results array
+        var randomIndex = Math.floor(Math.random() * data.data.results.length);
+
+        // Use the random index to get the comic thumbnail URL
+        var comicThumbnail = data.data.results[randomIndex].thumbnail;
+
+        // Create an image element for the comic thumbnail
+        var comicImg = document.createElement('img');
+        comicImg.src = comicThumbnail.path + '/portrait_incredible.' + comicThumbnail.extension;
+        comicImg.alt = data.data.results[randomIndex].title;
+
+        // Clear previous results
+        cresElement.innerHTML = '';
+
+        // Append the comic image to the "cres" element
+        cresElement.appendChild(comicImg);
+      } else {
+        // If no comics found, display a message
+        cresElement.innerHTML = 'No comics found for the character: ' + searchTerm;
+      }
+    })
+    .catch(function (error) {
+      console.error('Error:', error);
+    });
+}
+
+// Call the getComicList function with your desired search term
+getComicList('1009610'); // This will retrieve comics for Spider-Man
