@@ -1,5 +1,6 @@
 //variable for the images with clickable class
 var navclickel = document.querySelectorAll(".clickable")
+getMovieList('spider-man');
 
 for (var i = 0; i < navclickel.length; i++ ){
   navclickel[i].addEventListener("click", getinfo)
@@ -84,7 +85,11 @@ function getMovieFromImdbId(imdbId) {
 //this function is where the getmovie and get comic listing will go
 function getinfo()
 {
-  console.log(this.id)
+  var searchingterm = this.id;
+  var movieterm = searchingterm.split("/")[0]
+  var comicsearch = searchingterm.split("/")[1]
+  getmovieposter(movieterm)
+  getComicposter(comicsearch)
 }
 //variable instead the name to search by
 //if we are doing pre-designated names we need to have the buttons give the function the variable instead of "spider-man"
@@ -119,7 +124,6 @@ function getmovieposter(searchTerm) {
 }
 
 // Call the getMovieList function with your desired search term
-getMovieList('spider-man');
 
 function getComicposter(searchTerm) {
   var apikey = "f2a2353663e07a9ca6af17c5824f353f";
@@ -135,34 +139,24 @@ function getComicposter(searchTerm) {
       return response.json();
     })
     .then(function (data) {
-      var cresElement = document.getElementById("cres");
-
-      // Check if there are comics in the search results
-      if (data.data && data.data.results.length > 0) {
-        // Get a random index within the range of the comic results array
-        var randomIndex = Math.floor(Math.random() * data.data.results.length);
-
-        // Use the random index to get the comic thumbnail URL
-        var comicThumbnail = data.data.results[randomIndex].thumbnail;
-
-        // Create an image element for the comic thumbnail
-        var comicImg = document.createElement('img');
-        comicImg.src = comicThumbnail.path + '/portrait_incredible.' + comicThumbnail.extension;
-        comicImg.alt = data.data.results[randomIndex].title;
-
-        // Clear previous results
-        cresElement.innerHTML = '';
-
-        // Append the comic image to the "cres" element
-        cresElement.appendChild(comicImg);
-      } else {
-        // If no comics found, display a message
-        cresElement.innerHTML = 'No comics found for the character: ' + searchTerm;
+      //shows the data of the comics that character is in
+      console.log("-------------------------")
+      console.log(data)
+      for(let i = 0; i < 3; i++) {
+        const img = document.createElement("img")
+        var randomIndex = Math.floor(Math.random() * data.length)
+        const imagePath = data.data.results[randomIndex].images[0].path
+        if(imagePath.length > 0) {   
+          img.setAttribute("src", data.data.results[randomIndex].images[0].path + ".jpg")
+          comicres.append(img)
+        } 
+        else 
+        {
+          img.setAttribute("src", data.data.results[i + 1].images[0].path + ".jpg")
+          comicres.append(img)
+        }
       }
-    })
-    .catch(function (error) {
-      console.error('Error:', error);
-    });
+  });
 }
 // Call the getComicList function with your desired search term
 //getComicposter('1009610'); // This will retrieve comics for Spider-Man
