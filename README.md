@@ -5,15 +5,14 @@ https://github.com/BrandonERivera/frontendprobject-1
 What are we making?
  - In this project we are making a website that allows the user to click on various marvel characters.
  - This pulls up 2 types of search results. One for movies, and one for comics.
- - User can click on the results to then see a detailed page containing various info about the movie/comic.
- - User can then add a movie or comic to their favorites tab which is displayed on the home page.
+ - User can click on the results posters to add a comic or movie to their favorites bar
 
  ## Who?
  - This project is being created by a cohesive team of beginner web developers:
- - Brandon
- - Giorgi
- - Nat
- - Alex
+ - Brandon: The JavaScript Master
+ - Giorgi: Javascript Helper, Bulma Master, Html and CSS setup
+ - Nat: HTML and CSS Master (Styling), and Presentation
+ - Alex: Javascript Helper, Planner, General Helper
 
  ## Repo Structure
  The repo is structured in this manner:
