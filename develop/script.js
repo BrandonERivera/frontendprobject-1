@@ -1,47 +1,100 @@
 //variable for the images with clickable class
 var navclickel = document.querySelectorAll(".clickable")
-//gets the movie list by searchterm
-function getMovieList(searchTerm) {
+var comicres = document.querySelector("#Comicres")
+var movieres = document.querySelector("#Movieres")
+var moviearray = ["Spider-Man","Guardians of the Galaxy","Iron Man","Thor","Hulk"]
+
+//first gets a movie poster to display on main
+mainposterchoice()
+//gives the buttons the event listener for on click
+for (var i = 0; i < navclickel.length; i++ ){
+  navclickel[i].addEventListener("click", getinfo)
+}
+//chooses random index from moviearray and chooses that to look for a poster with
+function mainposterchoice() {
+  var randomIndex = Math.floor(Math.random() * moviearray.length);
+  console.log(moviearray[randomIndex])
+  getmoviemainposter(moviearray[randomIndex])
+}
+function getinfo()
+{
+  //gets the id of the button splits it into the comic search and movie search term and clears the results doc
+  var searchingterm = this.id;
+  var movieterm = searchingterm.split("/")[0]
+  var comicterm = searchingterm.split("/")[1]
+  comicres.innerHTML = "";
+  movieres.innerHTML = "";
+  getmovieposter(movieterm)
+  getComicposter(comicterm)
+}
+
+
+function getmoviemainposter(searchTerm) {
   var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
 
   fetch(requestUrl)
     .then(function (response) {
-      // console.log(response);
       return response.json();
     })
     .then(function (data) {
-      //data and object that has the search, total results and if it responded
-      //we want data.search to specifically get the movie list
-      console.log("our movie lists is here", data.search)
-      //this is running the function equal to the number of movies to get the data based on its id
-      for(var i = 0; i < data.Search.length; i++)
+      // Check if there are movies in the search results
+      if (data.Search && data.Search.length > 0) {
+        // Get a random index within the range of the search results array
+        var randomIndex = Math.floor(Math.random() * data.Search.length);
+
+        // Use the random index to get the poster URL of a random movie
+        var posterUrl = data.Search[randomIndex].Poster;
+
+        // Update the background image using the random movie's poster URL
+        document.getElementById('backgimg').src = posterUrl;
+      } 
+      else 
       {
-        var id = data.Search[i].imdbID
-        getMovieFromImdbId(id);
-
+        console.log("No movies found for the search term: " + searchTerm);
       }
-
     });
 }
-//get the comic list by searchterm
-const comicres = document.querySelector("#Comicres")
-function getcomicList(searchTerm) {
+
+function getmovieposter(searchTerm) {
+  var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
+
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      // Check if there are movies in the search results
+      for (let i = 0; i < 3; i++){
+        if (data.Search.length > 0) 
+        {
+          var img = document.createElement("img");
+          var randomIndex = Math.floor(Math.random() * data.Search.length);
+          var posterUrl = data.Search[randomIndex].Poster;
+          img.setAttribute("src", posterUrl);
+          movieres.append(img);
+        } 
+        else 
+        {
+          console.log("No movies found for the search term: " + searchTerm);
+        }
+      }
+    });
+}
+
+function getComicposter(searchTerm) {
   var apikey = "c28d1b2b7c226d7e5519d7bcd4284701"
   var privkey = "fb776d9a0343edc1503c8e8173ae1b0de30d0e25"
   var ts = "1"
   var passhash = CryptoJS.MD5(ts+privkey+apikey).toString();
-  console.log(passhash)
-  var requestUrl = `https://gateway.marvel.com:443/v1/public/characters/${searchTerm}/comics?limit=50&ts=${ts}&hash=${passhash}&apikey=${apikey}`;
-  //&name=${searchTerm}
+
+  var requestUrl = `https://gateway.marvel.com:443/v1/public/characters/${searchTerm}/comics?limit=20&ts=${ts}&hash=${passhash}&apikey=${apikey}`;
+
   fetch(requestUrl)
     .then(function (response) {
-      console.log(response);
       return response.json();
     })
     .then(function (data) {
       //shows the data of the comics that character is in
-      console.log("-------------------------")
-      console.log(data)
       const comics = data.data.results;
 
       // Filter out comics that don't have images
@@ -64,35 +117,4 @@ function getcomicList(searchTerm) {
       }
     });
 }
-
-function getMovieFromImdbId(imdbId) {
-  
-  var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&i=' + imdbId;
-
-  fetch(requestUrl)
-    .then(function (response) {
-      // console.log(response);
-      return response.json();
-    })
-    .then(function (data) {
-      console.log("the movie info is here", data)
-      data.Year
-      //Loop over the data to generate a table, each table row will have a link to the repo url
-
-
-    });
-}
-//this grabs every image thats class clickable and gives them an onclickevent
-for (var i = 0; i < navclickel.length; i++ ){
-  navclickel[i].addEventListener("click", getinfo)
-}
-//this function is where the getmovie and get comic listing will go
-function getinfo()
-{
-  console.log(this.id)
-}
-//variable instead the name to search by
-//if we are doing pre-designated names we need to have the buttons give the function the variable instead of "spider-man"
-//getMovieList('spider-man')
-//for comics it needs the id of the character
-getcomicList('1009610')
+//getComicposter('1009610'); // This will retrieve comics for Spider-Man
