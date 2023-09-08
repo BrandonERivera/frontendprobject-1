@@ -159,10 +159,11 @@ function moveToFavsStorage() {
           //if no repeats it pushes and saves
           FavLocalStorage.push(clickedImage);
           localStorage.setItem("FavLocalStorage", JSON.stringify(FavLocalStorage))
+          appendFavs()
         }
       }
     }
-    appendFavs()
+    appendFavs() 
 }
 
 
