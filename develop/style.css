@@ -1,22 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');
+
+.title {
+  font-family: 'Bangers', cursive;
+  font-size: 100px;
+  color: #ffb700;
+  text-shadow: 5px 5px #ff0000;
+  text-orientation: mixed;
+  letter-spacing: .2rem;
+}
+
+.subtitle {
+  color:#ffb700;
+  font-family: 'Bangers', cursive;
+  text-decoration: underline #ff0000;
+}
+
+.categories {
+  font-family: 'Bangers', cursive;
+  font-size: 50px;
+  color: #ffb700;
+  text-shadow: 3px 3px #ffb700;
+}
+
 .navbar {
     display: flex;
     justify-content: space-around;
-    background-color: #eed7d7;
+    background-color: #ffb700;
     padding: 10px;
   }
 
   /* Style for the navigation bar images */
   .navbar img {
-    width: 110px;
-    height: 110px;
+    width: 300px;
+    height: 250px;
     border-radius: 8%;
     cursor: pointer;
     transition: transform 0.2s;
+    margin: 20px;
+    box-shadow: 5px 10px #000000;
   }
 
   /* Hover effect for images */
   .navbar img:hover {
     transform: scale(1.2);
+    box-shadow: 5px 10px #000000;
   }
  .container, .title {
    
@@ -28,4 +55,19 @@
     padding: 30px;
 }
 
-  
+.image_re-size {
+  height: 300px;
+  width: 250px;
+  margin: 20px;
+  border: 5px solid #000000;
+}
+
+.star {
+  color:#ffb700;
+  font-family: 'Bangers', cursive;
+  text-decoration: underline #ff0000;
+}
+
+body {
+  background-color: rgb(72, 8, 8);
+}
