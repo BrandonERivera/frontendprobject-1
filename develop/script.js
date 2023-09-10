@@ -76,6 +76,7 @@ function getmovieposter(searchTerm) {
           var posterUrl = data.Search[randomIndex].Poster;
           img.setAttribute("src", posterUrl);
           img.setAttribute("class","favoritable")
+          img.setAttribute("class", "image_re-size");
           img.addEventListener("click", moveToFavsStorage)
           movieres.append(img);
         } 
@@ -116,6 +117,7 @@ function getComicposter(searchTerm) {
           const imagePath = comicsWithImages[randomIndex].images[0].path;
           img.setAttribute("src", `${imagePath}.jpg`);
           img.setAttribute("class","favoritable")
+          img.setAttribute("class", "image_re-size");
           img.addEventListener("click", moveToFavsStorage)
           comicres.append(img);
 
@@ -183,6 +185,7 @@ function appendFavs() {
       var fav = document.createElement("img")
       fav.setAttribute("src", FavLocalStorage[i])
       fav.setAttribute("index", i)
+      fav.setAttribute("class", "image_re-size");
       fav.addEventListener("click", removeFav)
       console.log("We are appending the new image to the favorite section!")
       theFavArea.append(fav)

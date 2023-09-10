@@ -11,13 +11,15 @@
    <header> 
   <section class="section">
     <div class="container">
-      <h1 class="title">Marvel Movies and Comics Searcher!</h1>
+      <h1 class="title">Marvel Characters Info Sheet!</h1>
         <img id="backgimg" src="" alt="background"/>
-      <h2 class="subtitle">Navigation bar</h2>
+      <h2 class="subtitle"></h2>
     </header>
     <!-- This is the Nav area-->
       <div class="is-flex is-flex-direction-column">
-        <h2 class="subtitle is-flex is-justify-content-center">Navigation bar</h2>
+        <style>
+          </style>
+        <h2 class="subtitle is-flex is-justify-content-center">Click A Character To Show Movies & Comics</h2>
         <div class="navbar">
           <img id="Spider-Man/1009610" class="clickable" src="assets/images/spiderman.jpg" alt="Spider-Man" />
         <img id="Guardians of the Galaxy/1010733" class="clickable" src="assets/images/starlord.png" alt="Guardians of the Galaxy" />
@@ -28,25 +30,19 @@
     </div>
     <!--This is where the favorites and movie/comic results are-->
     <div class ="is-flex is-flex-direction-column">
-      <section id = "favorite" class="is-flex is-flex-direction-row">
+      <section id = "favorite" class="is-flex is-flex-direction-column is-justify-content-center">
         <h2 class="categories">Favorited</h2>
-        <div id="favorites">
-
-        </div>
+        <div id="favorites" class="is-flex is-flex-direction-row is-justify-content-center"></div>
+        <h3 class="star is-flex is-justify-content-center">⭐Click A Poster To Favorite/Unfavorite!⭐</h3>
       </section>
-      <section id = "Movies" class="is-flex is-flex-direction-row">
+      <section id = "Movies" class="is-flex is-flex-direction-column is-justify-content-center">
         <h2 class="categories">Movie Results</h2>
-        <div  id ="Movieres" >
-
-        </div>
+        <div id="Movieres" class="is-flex is-flex-direction-row is-justify-content-center"></div>
       </section>
-      <section id = Comics class="is-flex is-flex-direction-row">
+      <section id = Comics class="is-flex is-flex-direction-column is-justify-content-center">
         <h2 class="categories">Comic Results</h2>
         <!-- <img id="cres" src="" alt="cres"/> -->
-        <div id="Comicres">
-
-        </div>
-      </section>
+        <div id="Comicres" class="is-flex is-flex-direction-row is-justify-content-center"></div>      </section>
     </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
