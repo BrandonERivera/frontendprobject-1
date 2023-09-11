@@ -34,7 +34,7 @@ function getinfo()
 
 
 function getmoviemainposter(searchTerm) {
-  var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
+  var requestUrl = 'https://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
 
   fetch(requestUrl)
     .then(function (response) {
@@ -60,7 +60,7 @@ function getmoviemainposter(searchTerm) {
 }
 
 function getmovieposter(searchTerm) {
-  var requestUrl = 'http://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
+  var requestUrl = 'https://www.omdbapi.com/?apikey=40a1c6b7&s=' + searchTerm;
 
   fetch(requestUrl)
     .then(function (response) {
