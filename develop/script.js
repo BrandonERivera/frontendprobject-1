@@ -202,28 +202,3 @@ function removeFav(){
   localStorage.setItem("FavLocalStorage", JSON.stringify(FavLocalStorage))
   appendFavs()
 }
-
-//getComicposter('1009610'); // This will retrieve comics for Spider-Man
-
-
-//images are grabbed on line 72 and line 110
-
-// Add Hover Effects for Each Image
-// decrease the image brightness, and add text to let user know they can click to save
-
-
-// New function to add the images from the array
-// Grab the array from local storage
-// Convert it to readable data JSON.parse
-// append the readable array items into the favorites section
-// loop through the array and append each item to the html
-// Done with the function
-
-// every time the page loads, call the local storage retrieval and appending function
-
-// Final Function to remove images from the html Favorite Section
-// Click Detector on the image
-// On click, run a function to remove the image from the html
-// DOM manipulate into the Favorites Section of the target, and remove the image
-// 
-

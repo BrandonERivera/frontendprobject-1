@@ -61,6 +61,10 @@
   margin: 20px;
   border: 5px solid #000000;
 }
+.image_re-size:hover{
+  transform: scale(1.2);
+  box-shadow: 5px 10px #000000;
+}
 
 .star {
   color:#ffb700;
@@ -70,4 +74,10 @@
 
 body {
   background-color: rgb(72, 8, 8);
+}
+.resultcata{
+  background-color: #ffb700;
+  border-color: #000000;
+  border-width: 5px;
+  border-radius: 10px;
 }
