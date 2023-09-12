@@ -83,6 +83,6 @@ body {
   border-radius: 10px;
 }
 .is-flex {
-  display: flex!important;
+  display: flex;
   flex-wrap: wrap;
 }
