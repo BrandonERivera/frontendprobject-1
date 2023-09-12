@@ -27,6 +27,7 @@
     justify-content: space-around;
     background-color: #ffb700;
     padding: 10px;
+    flex-wrap: wrap;
   }
 
   /* Style for the navigation bar images */
@@ -80,4 +81,8 @@ body {
   border-color: #000000;
   border-width: 5px;
   border-radius: 10px;
+}
+.is-flex {
+  display: flex;
+  flex-wrap: wrap;
 }
